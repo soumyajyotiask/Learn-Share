@@ -1,0 +1,41 @@
+apply plugin: "java"
+apply plugin: "eclipse"
+
+group = "cache"
+version = 1.0
+
+repositories {
+    mavenCentral()
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/cache'
+        }
+    }
+    
+    test {
+        java {
+            srcDir 'test/cache'
+        }
+    }
+}
+
+dependencies {
+
+    compile 'commons-lang:commons-lang:2.6',
+    		'org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE',
+			'com.hazelcast:hazelcast:3.3.3'
+
+    testCompile 'junit:junit:4.9'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Distributed Cache',
+                   'Implementation-Version': version,
+                   'Main-Class' : 'com.cache.ApplicationMain'
+    }
+}

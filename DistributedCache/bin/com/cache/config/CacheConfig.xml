@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:hz="http://www.hazelcast.com/schema/spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.hazelcast.com/schema/spring
+    http://www.hazelcast.com/schema/spring/hazelcast-spring-2.4.xsd">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="locations">
+	        <list>
+	            <value>classpath:com.cache.CommonCache.properties</value>
+	        </list>
+	    </property>
+	</bean>
+
+	 <hz:hazelcast id="hzInstance">
+	  <hz:config>
+	    <hz:group name="${hz.group.name}" password="${hz.group.password}" />
+	    <hz:network port="5701" port-auto-increment="true">
+	      <hz:join>
+	        <hz:multicast enabled="false" />	
+	        <hz:tcp-ip enabled="true">
+	          <hz:members>localhost</hz:members>
+	        </hz:tcp-ip>
+	      </hz:join>
+	    </hz:network>
+	    
+	    <hz:map name="${ARM_SHARED_OBJECTS:armSharedObject}" 
+	    		eviction-policy="LRU"
+	    		max-size="200"
+	    		max-size-policy="USED_HEAP_SIZE"
+	    		backup-count="1"
+	    />
+	    
+	  </hz:config>
+	 </hz:hazelcast>
+	  
+</beans>
