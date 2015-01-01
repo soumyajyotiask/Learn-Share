@@ -5,12 +5,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.hazelcast.com/schema/spring
-    http://www.hazelcast.com/schema/spring/hazelcast-spring-2.4.xsd">
+    http://www.hazelcast.com/schema/spring/hazelcast-spring-3.3.xsd">
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	    <property name="locations">
 	        <list>
-	            <value>classpath:com.cache.CommonCache.properties</value>
+	            <value>classpath:com\cache\config\CommonCache.properties</value>
 	        </list>
 	    </property>
 	</bean>

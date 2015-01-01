@@ -14,6 +14,7 @@ public class ApplicationMain {
     public static void main(String[] args) {
     	
     	ApplicationContext applicationContext = new ClassPathXmlApplicationContext(args[0]);
+    	
         /*Config cfg = new Config();
         HazelcastInstance instance = Hazelcast.newHazelcastInstance(cfg);
         Map<Integer, String> mapCustomers = instance.getMap("customers");
